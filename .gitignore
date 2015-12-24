@@ -1,0 +1,7 @@
+.elpa
+tmp
+ido.last
+snippets/*
+!snippets/.gitkeep
+tramp
+custom.el

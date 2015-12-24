@@ -1,0 +1,6 @@
+[submodule "source/user/emacs-color-theme-solarized"]
+	path = source/user/emacs-color-theme-solarized
+	url = git@github.com:sellout/emacs-color-theme-solarized.git
+[submodule "source/user/dash-at-point"]
+	path = source/user/dash-at-point
+	url = git@github.com:stanaka/dash-at-point.git
