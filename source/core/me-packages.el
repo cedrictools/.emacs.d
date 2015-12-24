@@ -42,25 +42,20 @@
   "Check if all packages in `me-packages' are installed."
   (every #'package-installed-p packages))
 
-(defun me/require-package (package)
+(defun me/install-package (package)
   "Install PACKAGE unless already installed."
   (unless (package-installed-p package)
     (package-install package)))
 
-(defun me/require-packages (packages)
-  "Ensure PACKAGES are installed.
-  Missing packages are installed automatically."
-  (mapc #'me/require-package packages))
-
 (defun me/install-packages (packages)
-  "Install all packages listed in `me/packages'."
+  "Install all packages listed `packages'."
   (unless (me/packages-installed-p packages)
     ;; check for new packages (package versions)
     (message "%s" "Refreshing package database...")
     (package-refresh-contents)
     (message "%s" " done.")
     ;; install the missing packages
-    (me/require-packages packages)))
+    (mapc #'me/install-package packages)))
 
 (provide 'me-packages)
 

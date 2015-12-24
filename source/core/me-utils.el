@@ -59,10 +59,17 @@
                    (not (equal f ".")))
           (me/rec-add-folder-to-load-path name))))))
 
+(defun me/str-starts-with (s begins)
+  "Return non-nil if string S starts with BEGINS."
+  (cond ((>= (length s) (length begins))
+         (string-equal (substring s 0 (length begins)) begins))
+        (t nil)))
+
 (defun me/require-in-folder (dir)
  (dolist (f (directory-files dir))
    (let ((fname (expand-file-name f dir)))
-    (when (file-regular-p fname)
+    (when (and (not (me/str-starts-with f "-"))
+               (file-regular-p fname))
      (load fname)))))
 
 ;; Fix the PATH variable

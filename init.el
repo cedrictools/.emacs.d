@@ -27,34 +27,42 @@
 
 (defvar my-packages
   '(browse-kill-ring
-    dash
-    diminish
-    evil
-    company
-    flycheck
-    expand-region
-    ace-jump-mode
-    yaml-mode
-    web-mode
-    less-css-mode
-    gitconfig-mode
-    gitignore-mode
-    git-gutter
-    markdown-mode
-    magit
-    gist
-    helm
-    sr-speedbar
-    yasnippet
-    undo-tree
-    direx
-    ;;grizzl
-    ;;move-text
-    rainbow-mode
-    rainbow-delimiters
-    ;;paredit
-    ;;volatile-highlights
-    ))
+     diminish
+     company
+     flycheck
+     expand-region
+     ace-jump-mode
+     yaml-mode
+     web-mode
+     flx-ido
+
+     gitconfig-mode
+     gitignore-mode
+     git-gutter
+
+     markdown-mode
+     magit
+     gist
+     helm
+     yasnippet
+     undo-tree
+     direx
+
+     move-text
+
+     projectile
+     rainbow-mode
+     rainbow-delimiters
+
+     evil
+     evil-leader
+     evil-escape
+     evil-smartparens
+
+     dash
+     cider
+     clojure-mode
+     ))
 
 (me/install-packages my-packages)
 
