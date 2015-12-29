@@ -29,7 +29,7 @@
 
 ;; More sane garbage collection threashold
 (setq gc-cons-threshold
- 20000000)
+      20000000)
 
 (menu-bar-mode -1)
 ;;(scroll-bar-mode -1)
@@ -38,7 +38,7 @@
 (me/touch
   (expand-file-name "custom.el" user-emacs-directory))
 (setq custom-file
- (expand-file-name "custom.el" user-emacs-directory))
+      (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
 
 ;; Emacs server
@@ -108,7 +108,7 @@
 (setq auto-save-file-name-transforms `((".*" ,me/tmp-dir t)))
 (setq auto-save-list-file-prefix (expand-file-name ".saves-" me/tmp-dir))
 (setq undo-tree-history-directory-alist
-       `((".*" . ,me/tmp-dir)))
+      `((".*" . ,me/tmp-dir)))
 (setq undo-tree-auto-save-history t)
 (setq backup-by-copying t)
 (setq delete-old-versions t)
@@ -144,20 +144,20 @@
   ;; http://emacs-fu.blogspot.co.uk/2011/01/setting-frame-title.html
   (setq frame-title-format
         '((:eval (if (buffer-file-name)
-                     (abbreviate-file-name (buffer-file-name))
+                   (abbreviate-file-name (buffer-file-name))
                    "%b")))))
 
 ;; smart beginning-of-line, from: http://irreal.org/blog/?p=1946
 (defadvice move-beginning-of-line (around smarter-bol activate)
-  ;; Move to requested line if needed.
-  (let ((arg (or (ad-get-arg 0) 1)))
-    (when (/= arg 1)
-      (forward-line (1- arg))))
-  ;; Move to indentation on first call, then to actual BOL on second.
-  (let ((pos (point)))
-    (back-to-indentation)
-    (when (= pos (point))
-      ad-do-it)))
+           ;; Move to requested line if needed.
+           (let ((arg (or (ad-get-arg 0) 1)))
+             (when (/= arg 1)
+               (forward-line (1- arg))))
+           ;; Move to indentation on first call, then to actual BOL on second.
+           (let ((pos (point)))
+             (back-to-indentation)
+             (when (= pos (point))
+               ad-do-it)))
 
 ;; stop allowing point over minibuffer prompt
 ;; http://ergoemacs.org/emacs/emacs_stop_cursor_enter_prompt.html
@@ -172,7 +172,26 @@
 ;; Do everything in one frame always
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
 
+(unless window-system
+  (require 'mouse)
+  (xterm-mouse-mode t)
+
+  (global-set-key
+    [mouse-4]
+    (lambda ()
+      (interactive)
+      (scroll-down 1)))
+
+  (global-set-key
+    [mouse-5]
+    (lambda ()
+      (interactive)
+      (scroll-up 1)))
+
+  (defun track-mouse (e))
+  (setq mouse-sel-mode t))
+
 (when (me/darwin-p)
- (require 'me-osx))
+  (require 'me-osx))
 
 (provide 'me-setup)

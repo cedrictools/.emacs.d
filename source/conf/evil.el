@@ -1,8 +1,12 @@
 
 (require 'evil)
 (require 'evil-leader)
+(require 'evil-escape)
 
 (evil-mode 1)
+(display-time-mode t)
+(global-evil-leader-mode)
+(setq evil-leader/in-all-states 1)
 
 ;; mode local binding
 ;; (evil-leader/set-key-for-mode 'emacs-lisp-mode "b" 'byte-compile-file)
@@ -17,7 +21,7 @@
                                  ((buffer-modified-p)   '("#006fa0" . "#ffffff"))
                                  (t default-color))))
                 (set-face-background 'mode-line (car color))
-                (set-face-foreground 'mode-line (cdr color))))))(provide 'memacs-evil)
+                (set-face-foreground 'mode-line (cdr color))))))
 
 ;; Initial states for some modes
 
@@ -29,5 +33,3 @@
        cider-repl-mode
        grep-mode
        ibuffer-mode)))
-
-

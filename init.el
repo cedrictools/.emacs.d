@@ -35,6 +35,7 @@
      yaml-mode
      web-mode
      flx-ido
+     popwin
 
      gitconfig-mode
      gitignore-mode
@@ -47,10 +48,12 @@
      yasnippet
      undo-tree
      direx
+     direx-grep
 
      move-text
 
      projectile
+     helm-projectile
      rainbow-mode
      rainbow-delimiters
 
