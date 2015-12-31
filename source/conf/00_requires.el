@@ -1,2 +1,1 @@
-(require 'direx)
-(require 'direx-grep)
+(require 'neotree)

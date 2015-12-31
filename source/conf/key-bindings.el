@@ -41,7 +41,7 @@
  "e"   'er/expand-region
  "a"   'align-regexp
  "u"   'undo-tree-visualize
- "f"   'direx-project:jump-to-project-root
+ "f"   'neotree-toggle
  "p"   'helm-projectile
  "P"   'helm-find-files
  "g"   'helm-do-grep-ag
@@ -51,15 +51,15 @@
  "i"   'evil-ace-jump-char-mode)
 
 ;; direx
-(evil-declare-key 'normal direx:direx-mode-map  (kbd  "RET") 'direx:maybe-find-item)
-(evil-declare-key 'normal direx:direx-mode-map  (kbd  "r")   'direx:refresh-whole-tree)
-(evil-declare-key 'normal direx:direx-mode-map  (kbd  "o")   'direx:find-item-other-window)
-(evil-declare-key 'normal direx:direx-mode-map  (kbd  "O")   'direx:view-item-other-window)
-(evil-declare-key 'normal direx:direx-mode-map  (kbd  "D")   'direx:do-delete-files)
-(evil-declare-key 'normal direx:direx-mode-map  (kbd  "R")   'direx:do-rename-files)
-(evil-declare-key 'normal direx:direx-mode-map  (kbd  "C")   'direx:do-touch)
-(evil-declare-key 'normal direx:direx-mode-map  (kbd  "s")   'direx-grep:grep-item-from-root)
-(evil-declare-key 'normal direx:direx-mode-map  (kbd  "S")   'direx-grep:show-all-item)
+(evil-declare-key 'normal neotree-mode-map (kbd  "RET") (neotree-make-executor
+                                                          :file-fn 'neo-open-file
+                                                          :dir-fn  'neo-open-dir))
+(evil-declare-key 'normal neotree-mode-map (kbd  "k") 'neotree-previous-line)
+(evil-declare-key 'normal neotree-mode-map (kbd  "j") 'neotree-next-line)
+(evil-declare-key 'normal neotree-mode-map (kbd  "m a") 'neotree-create-node)
+(evil-declare-key 'normal neotree-mode-map (kbd  "m r") 'neotree-rename-node)
+(evil-declare-key 'normal neotree-mode-map (kbd  "m c") 'neotree-copy-node)
+(evil-declare-key 'normal neotree-mode-map (kbd  "m d") 'neotree-delete-node)
 
 (global-set-key (kbd "C-k") (lambda () (interactive) (evil-previous-line 10)))
 (global-set-key (kbd "C-j") (lambda () (interactive) (evil-next-line 10)))

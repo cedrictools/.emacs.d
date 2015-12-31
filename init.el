@@ -47,8 +47,7 @@
      helm
      yasnippet
      undo-tree
-     direx
-     direx-grep
+     neotree
 
      move-text
 
