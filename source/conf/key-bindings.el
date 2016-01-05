@@ -41,6 +41,7 @@
  "e"   'er/expand-region
  "a"   'align-regexp
  "u"   'undo-tree-visualize
+ "b"   'helm-buffers-list
  "f"   'neotree-toggle
  "p"   'helm-projectile
  "P"   'helm-find-files

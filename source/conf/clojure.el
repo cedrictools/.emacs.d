@@ -12,4 +12,3 @@
 (add-hook 'cider-mode-hook #'company-mode)
 
 (setq cider-boot-parameters "dev repl -s wait")
-
