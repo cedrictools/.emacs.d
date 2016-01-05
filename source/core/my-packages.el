@@ -26,16 +26,8 @@
 (require 'package)
 (require 'my-utils)
 
-(add-to-list
-  'package-archives
-  '("melpa" . "http://melpa.milkbox.net/packages/") t)
-
-(add-to-list
-  'package-archives
-  '("marmalade" . "http://marmalade-repo.org/packages/") t)
-
 ;; Custom elpa package directory
-(setq package-user-dir (expand-file-name ".elpa" user-emacs-directory))
+(setq package-user-dir (expand-file-name ".pkgs" user-emacs-directory))
 (package-initialize)
 
 (defun my/packages-installed-p (packages)

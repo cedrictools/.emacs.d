@@ -69,6 +69,20 @@
      clojure-mode
      ))
 
+(setq
+ package-archives
+ (nconc
+  package-archives
+  '(("marmalade" . "http://marmalade-repo.org/packages/")
+    ("melpa" . "http://melpa.milkbox.net/packages/")
+    ("melpa-stable" . "https://stable.melpa.org/packages/"))))
+
+;; pinn packages to stable archives
+(setq
+ package-pinned-packages
+ '((cider . "melpa-stable")
+   (clojure-mode . "melpa-stable")))
+
 (my/install-packages my-packages)
 
 ;; Expects `git submodule update --init --recursive` in ~/.emacs.d
