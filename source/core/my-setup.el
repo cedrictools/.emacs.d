@@ -1,4 +1,4 @@
-;;;; me-setup.el --- basic emacs setup
+;;;; my-setup.el --- basic emacs setup
 ;;
 ;; Copyright (c) 2015 Fabio Bernasconi
 ;;
@@ -22,8 +22,8 @@
 
 ;;; Code:
 
-(require 'me-utils)
-(require 'me-packages)
+(require 'my-utils)
+(require 'my-packages)
 
 (setq inhibit-startup-message t)
 
@@ -35,7 +35,7 @@
 ;;(scroll-bar-mode -1)
 ;;(tool-bar-ode -1)
 
-(me/touch
+(my/touch
   (expand-file-name "custom.el" user-emacs-directory))
 (setq custom-file
       (expand-file-name "custom.el" user-emacs-directory))
@@ -43,8 +43,8 @@
 
 ;; Emacs server
 
-;;(defvar me/server-socket-dir
-;; (me/make-dir me/tmp-dir "server-sockets"))
+;;(defvar my/server-socket-dir
+;; (my/make-dir my/tmp-dir "server-sockets"))
 ;;(setq server-socket-dir memacs/server-socket-dir)
 (setq server-name "emacs-server")
 (when (require 'server nil t)
@@ -104,11 +104,11 @@
 (setq-default tab-width 4)
 
 ;; Backup and autosave, see http://stackoverflow.com/questions/151945/how-do-i-control-how-emacs-makes-backup-files
-(setq backup-directory-alist `((".*" . ,me/tmp-dir)))
-(setq auto-save-file-name-transforms `((".*" ,me/tmp-dir t)))
-(setq auto-save-list-file-prefix (expand-file-name ".saves-" me/tmp-dir))
+(setq backup-directory-alist `((".*" . ,my/tmp-dir)))
+(setq auto-save-file-name-transforms `((".*" ,my/tmp-dir t)))
+(setq auto-save-list-file-prefix (expand-file-name ".saves-" my/tmp-dir))
 (setq undo-tree-history-directory-alist
-      `((".*" . ,me/tmp-dir)))
+      `((".*" . ,my/tmp-dir)))
 (setq undo-tree-auto-save-history t)
 (setq backup-by-copying t)
 (setq delete-old-versions t)
@@ -191,7 +191,7 @@
   (defun track-mouse (e))
   (setq mouse-sel-mode t))
 
-(when (me/darwin-p)
-  (require 'me-osx))
+(when (my/darwin-p)
+  (require 'my-osx))
 
-(provide 'me-setup)
+(provide 'my-setup)

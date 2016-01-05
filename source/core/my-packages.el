@@ -1,4 +1,4 @@
-;;; me-packages.el --- me package functions
+;;; my-packages.el --- me package functions
 ;;
 ;; Copyright (c) 2015 Fabio Bernasconi
 ;;
@@ -24,7 +24,7 @@
 
 (require 'cl)
 (require 'package)
-(require 'me-utils)
+(require 'my-utils)
 
 (add-to-list
   'package-archives
@@ -38,25 +38,25 @@
 (setq package-user-dir (expand-file-name ".elpa" user-emacs-directory))
 (package-initialize)
 
-(defun me/packages-installed-p (packages)
-  "Check if all packages in `me-packages' are installed."
+(defun my/packages-installed-p (packages)
+  "Check if all packages in `my-packages' are installed."
   (every #'package-installed-p packages))
 
-(defun me/install-package (package)
+(defun my/install-package (package)
   "Install PACKAGE unless already installed."
   (unless (package-installed-p package)
     (package-install package)))
 
-(defun me/install-packages (packages)
+(defun my/install-packages (packages)
   "Install all packages listed `packages'."
-  (unless (me/packages-installed-p packages)
+  (unless (my/packages-installed-p packages)
     ;; check for new packages (package versions)
     (message "%s" "Refreshing package database...")
     (package-refresh-contents)
     (message "%s" " done.")
     ;; install the missing packages
-    (mapc #'me/install-package packages)))
+    (mapc #'my/install-package packages)))
 
-(provide 'me-packages)
+(provide 'my-packages)
 
-;;; me-packages.el ends here
+;;; my-packages.el ends here

@@ -68,7 +68,7 @@
 
 (when (display-graphic-p)
   ;; Fix path on OSx
-  (me/set-exec-path-from-shell-PATH)
+  (my/set-exec-path-from-shell-PATH)
 
   ;; Use proper sRGB
   ;; http://lists.gnu.org/archive/html/emacs-devel/2013-12/msg00741.html
@@ -76,7 +76,7 @@
 
   (setq ns-use-native-fullscreen t))
 
-(provide 'me-osx)
+(provide 'my-osx)
 
 ;;; me-osx.el ends here
 
