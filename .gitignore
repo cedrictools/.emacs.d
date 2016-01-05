@@ -5,3 +5,4 @@ snippets/*
 !snippets/.gitkeep
 tramp
 custom.el
+\#*

@@ -44,6 +44,7 @@
  "f"   'neotree-toggle
  "p"   'helm-projectile
  "P"   'helm-find-files
+ "b"   'helm-buffers-list
  "g"   'helm-do-grep-ag
  "v g" 'magit-status
  "e"   'evil-ace-jump-word-mode
