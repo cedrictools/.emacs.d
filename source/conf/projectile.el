@@ -3,3 +3,5 @@
 (require 'helm-projectile)
 
 (setq projectile-switch-project-action 'neotree-projectile-action)
+
+(projectile-global-mode)

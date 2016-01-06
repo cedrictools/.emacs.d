@@ -66,4 +66,14 @@
 (global-set-key (kbd "C-k") (lambda () (interactive) (evil-previous-line 10)))
 (global-set-key (kbd "C-j") (lambda () (interactive) (evil-next-line 10)))
 
+(defhydra hydra-buffer-menu nil
+  "sp:"
+  ("n" sp-forward-slurp-sexp "f-slurp")
+  ("t" sp-backward-slurp-sexp "b-slurp")
+  ("e" sp-forward-barf-sexp "f-barf")
+  ("s" sp-backward-barf-sexp "b-barf")
 
+  ("k" sp-kill-sexp))
+
+(evil-leader/set-key
+ "s"   'hydra-buffer-menu/body)
