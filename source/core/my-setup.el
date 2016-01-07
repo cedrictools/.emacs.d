@@ -129,7 +129,7 @@
 ;; Highlight parens
 (show-paren-mode 1)
 
-(set-face-background 'show-paren-match "#66CCFF")
+(set-face-background 'show-paren-match "#990000")
 (set-face-foreground 'show-paren-match "#000000")
 (set-face-attribute 'show-paren-match nil :weight 'extra-bold)
 

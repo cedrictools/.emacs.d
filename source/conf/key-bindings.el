@@ -47,7 +47,6 @@
  "P"   'helm-find-files
  "b"   'helm-buffers-list
  "g"   'helm-projectile-ag
- "v g" 'magit-status
  "e"   'evil-ace-jump-word-mode
  "n"   'evil-ace-jump-line-mode
  "i"   'evil-ace-jump-char-mode)
@@ -66,17 +65,45 @@
 (global-set-key (kbd "C-k") (lambda () (interactive) (evil-previous-line 10)))
 (global-set-key (kbd "C-j") (lambda () (interactive) (evil-next-line 10)))
 
-(defhydra hydra-buffer-menu nil
-  "sp:"
-  ("n" sp-forward-slurp-sexp "f-slurp")
-  ("t" sp-backward-slurp-sexp "b-slurp")
-  ("e" sp-forward-barf-sexp "f-barf")
-  ("s" sp-backward-barf-sexp "b-barf")
+(defhydra hydra-smartparens-menu nil
+  "sp"
+  ("n" sp-forward-slurp-sexp "slrp")
+  ("t" sp-forward-barf-sexp "brf")
+  ("s" sp-backward-slurp-sexp "b-slrp")
+  ("e" sp-backward-barf-sexp "b-brf")
+
+  ("g" sp-select-pervious-thing-exchange "sel")
+  ("l" sp-select-next-thing-exchange "b-sel")
 
   ("k" sp-kill-sexp "kill"))
 
 (evil-leader/set-key
- "s"   'hydra-buffer-menu/body)
+ "s"   'hydra-smartparens-menu/body)
+
+(defhydra hydra-textop-menu nil
+  "mv"
+  ("k" move-text-up "up")
+  ("j" move-text-down "down")
+  ("s" transpose-sexps "sexp"))
+
+(evil-leader/set-key
+ "m"   'hydra-textop-menu/body)
+
+(defhydra hydra-modes-menu nil
+  "modes"
+  ("v" vline-mode "vline")
+  ("h" hl-line-mode "hline"))
+
+(evil-leader/set-key
+ "q"   'hydra-modes-menu/body)
+
+(defhydra hydra-magit-menu nil
+  "modes"
+  ("s" magit-status "status"))
+
+(evil-leader/set-key
+ "v"   'hydra-magit-menu/body)
+
 
 ;; Company
 

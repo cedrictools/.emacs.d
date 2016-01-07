@@ -40,6 +40,7 @@
      web-mode
      flx-ido
      popwin
+     vline
 
      gitconfig-mode
      gitignore-mode
