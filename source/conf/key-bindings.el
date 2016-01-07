@@ -46,13 +46,13 @@
  "p"   'helm-projectile
  "P"   'helm-find-files
  "b"   'helm-buffers-list
- "g"   'helm-do-grep-ag
+ "g"   'helm-projectile-ag
  "v g" 'magit-status
  "e"   'evil-ace-jump-word-mode
  "n"   'evil-ace-jump-line-mode
  "i"   'evil-ace-jump-char-mode)
 
-;; direx
+;; neotree
 (evil-declare-key 'normal neotree-mode-map (kbd  "RET") (neotree-make-executor
                                                           :file-fn 'neo-open-file
                                                           :dir-fn  'neo-open-dir))
@@ -73,7 +73,12 @@
   ("e" sp-forward-barf-sexp "f-barf")
   ("s" sp-backward-barf-sexp "b-barf")
 
-  ("k" sp-kill-sexp))
+  ("k" sp-kill-sexp "kill"))
 
 (evil-leader/set-key
  "s"   'hydra-buffer-menu/body)
+
+;; Company
+
+(define-key company-active-map (kbd "C-j") 'company-select-next-or-abort)
+(define-key company-active-map (kbd "C-k") 'company-select-previous-or-abort)

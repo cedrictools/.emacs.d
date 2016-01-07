@@ -25,6 +25,10 @@
 
 (require 'my-setup)
 
+;; Expects `git submodule update --init --recursive` in ~/.emacs.d
+;; to have happened
+(my/rec-add-folder-to-load-path my/user-dir)
+
 (defvar my-packages
   '(browse-kill-ring
      diminish
@@ -44,7 +48,6 @@
      markdown-mode
      magit
      gist
-     helm
      yasnippet
      smartparens
      undo-tree
@@ -53,6 +56,8 @@
      move-text
 
      projectile
+     helm
+     helm-ag
      helm-projectile
      rainbow-mode
      rainbow-delimiters
@@ -70,10 +75,10 @@
      ))
 
 (setq
- package-archives
- (nconc
   package-archives
-  '(("marmalade" . "http://marmalade-repo.org/packages/")
+  (nconc
+    package-archives
+    '(("marmalade" . "http://marmalade-repo.org/packages/")
     ("melpa" . "http://melpa.milkbox.net/packages/")
     ("melpa-stable" . "https://stable.melpa.org/packages/"))))
 
@@ -84,10 +89,6 @@
    (clojure-mode . "melpa-stable")))
 
 (my/install-packages my-packages)
-
-;; Expects `git submodule update --init --recursive` in ~/.emacs.d
-;; to have happened
-(my/rec-add-folder-to-load-path my/user-dir)
 
 ;; Finally configure all the packages
 (my/require-in-folder my/conf-dir)

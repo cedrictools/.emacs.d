@@ -1,8 +1,3 @@
-
-(require 'evil)
-(require 'evil-leader)
-(require 'evil-escape)
-
 (evil-mode 1)
 (display-time-mode t)
 (global-evil-leader-mode)

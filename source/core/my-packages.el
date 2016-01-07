@@ -37,7 +37,8 @@
 (defun my/install-package (package)
   "Install PACKAGE unless already installed."
   (unless (package-installed-p package)
-    (package-install package)))
+    (package-install package)
+    (require package)))
 
 (defun my/install-packages (packages)
   "Install all packages listed `packages'."
