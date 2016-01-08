@@ -16,3 +16,5 @@
 
 (require 'cider)
 (require 'clojure-mode)
+
+(require 'smartparens)
