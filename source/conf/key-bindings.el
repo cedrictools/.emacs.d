@@ -67,10 +67,10 @@
 
 (defhydra hydra-smartparens-menu nil
   "sp"
-  ("n" sp-forward-slurp-sexp "slrp")
-  ("t" sp-forward-barf-sexp "brf")
+  ("e" sp-forward-slurp-sexp "slrp")
+  ("n" sp-forward-barf-sexp "brf")
   ("s" sp-backward-slurp-sexp "b-slrp")
-  ("e" sp-backward-barf-sexp "b-brf")
+  ("t" sp-backward-barf-sexp "b-brf")
 
   ("g" sp-select-pervious-thing-exchange "sel")
   ("l" sp-select-next-thing-exchange "b-sel")
