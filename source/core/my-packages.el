@@ -37,8 +37,7 @@
 (defun my/install-package (package)
   "Install PACKAGE unless already installed."
   (unless (package-installed-p package)
-    (package-install package)
-    (require package)))
+    (package-install package)))
 
 (defun my/install-packages (packages)
   "Install all packages listed `packages'."
@@ -49,6 +48,10 @@
     (message "%s" " done.")
     ;; install the missing packages
     (mapc #'my/install-package packages)))
+
+(defun my/require-packages (packages)
+  "Require all PACKAGES"
+  (mapc #'require packages))
 
 (provide 'my-packages)
 

@@ -72,16 +72,15 @@
 
      dash
      cider
-     clojure-mode
-     ))
+     clojure-mode))
 
 (setq
   package-archives
   (nconc
-    package-archives
-    '(("marmalade" . "http://marmalade-repo.org/packages/")
-    ("melpa" . "http://melpa.milkbox.net/packages/")
-    ("melpa-stable" . "https://stable.melpa.org/packages/"))))
+   package-archives
+   '(("marmalade" . "http://marmalade-repo.org/packages/")
+     ("melpa" . "http://melpa.milkbox.net/packages/")
+     ("melpa-stable" . "https://stable.melpa.org/packages/"))))
 
 ;; pinn packages to stable archives
 (setq
@@ -90,6 +89,10 @@
    (clojure-mode . "melpa-stable")))
 
 (my/install-packages my-packages)
+(my/require-packages
+ (nconc
+  my-packages
+  '(dash-at-point)))
 
 ;; Finally configure all the packages
 (my/require-in-folder my/conf-dir)
