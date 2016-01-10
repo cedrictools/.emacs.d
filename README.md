@@ -13,3 +13,8 @@ or alternatively
 
 Have fun.
 
+# License
+
+licensed under the MIT License:
+
+    see LICENSE or http://opensource.org/licenses/mit-license.html
