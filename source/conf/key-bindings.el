@@ -40,11 +40,11 @@
  "d d" 'dash-at-point
  "e"   'er/expand-region
  "a"   'align-regexp
- "f"   'project-explorer-open
+ "t"   'project-explorer-open
  "u"   'undo-tree-visualize
  "b"   'helm-buffers-list
- "p"   'helm-projectile
- "P"   'helm-find-files
+ "f"   'helm-projectile
+ "F"   'helm-find-files
  "b"   'helm-buffers-list
  "g"   'helm-projectile-ag
  "e"   'evil-ace-jump-word-mode
@@ -96,11 +96,21 @@
 
 (defhydra hydra-project-explorer-menu nil
   "prj-exp"
-  ("t" 'pr/create-file "create")
-  ("d" 'pr/delete-file "delete")
-  ("m" 'pr/rename-file "rename")
-  ("c" 'pr/copy-file   "copy"))
+  ("t" pr/create-file "create")
+  ("d" pr/delete-file "delete")
+  ("m" pr/rename-file "rename")
+  ("c" pr/copy-file   "copy"))
 (define-key project-explorer-mode-map (kbd "e") 'hydra-project-explorer-menu/body)
+
+;; Projectile
+(defhydra hydra-projectile-menu nil
+  "projectile"
+  ("t" projectile-find-test-file "test files")
+  ("r" projectile-replace "query-replace"))
+(evil-leader/set-key
+  "p"  'hydra-projectile-menu/body)
+
+
 
 ;; Company
 
