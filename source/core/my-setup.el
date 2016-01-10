@@ -104,9 +104,12 @@
 (setq-default tab-width 4)
 
 ;; Backup and autosave, see http://stackoverflow.com/questions/151945/how-do-i-control-how-emacs-makes-backup-files
-(setq backup-directory-alist `((".*" . ,my/tmp-dir)))
-(setq auto-save-file-name-transforms `((".*" ,my/tmp-dir t)))
-(setq auto-save-list-file-prefix (expand-file-name ".saves-" my/tmp-dir))
+(setq backup-directory-alist
+      `(("." . ,my/tmp-dir)))
+(setq auto-save-file-name-transforms
+      `((".*" ,my/tmp-dir t)))
+(setq auto-save-list-file-prefix
+      (expand-file-name ".saves-" my/tmp-dir))
 (setq undo-tree-history-directory-alist
       `((".*" . ,my/tmp-dir)))
 (setq undo-tree-auto-save-history t)

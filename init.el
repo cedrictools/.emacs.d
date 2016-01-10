@@ -9,14 +9,14 @@
 
 ;; Set up dirs & load-path
 (defvar my/core-dir
-  (expand-file-name "source/core" user-emacs-directory))
+  (expand-file-name "source/core/" user-emacs-directory))
 (defvar my/conf-dir
-  (expand-file-name "source/conf" user-emacs-directory))
+  (expand-file-name "source/conf/" user-emacs-directory))
 ;; Put manually managed stuff in here
 (defvar my/user-dir
- (expand-file-name "source/user" user-emacs-directory))
+ (expand-file-name "source/user/" user-emacs-directory))
 (defvar my/tmp-dir
- (expand-file-name "tmp" user-emacs-directory))
+ (expand-file-name "tmp/" user-emacs-directory))
 
 ;; Set up load path
 (add-to-list 'load-path my/core-dir)
