@@ -1,5 +1,5 @@
 (require 'projectile)
-(require 'neotree)
+(require 'project-explorer)
 (require 'hydra)
 
 (require 'dash-at-point)

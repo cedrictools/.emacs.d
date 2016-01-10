@@ -40,9 +40,9 @@
  "d d" 'dash-at-point
  "e"   'er/expand-region
  "a"   'align-regexp
+ "f"   'project-explorer-open
  "u"   'undo-tree-visualize
  "b"   'helm-buffers-list
- "f"   'neotree-toggle
  "p"   'helm-projectile
  "P"   'helm-find-files
  "b"   'helm-buffers-list
@@ -51,20 +51,10 @@
  "n"   'evil-ace-jump-line-mode
  "i"   'evil-ace-jump-char-mode)
 
-;; neotree
-(evil-declare-key 'normal neotree-mode-map (kbd  "RET") (neotree-make-executor
-                                                          :file-fn 'neo-open-file
-                                                          :dir-fn  'neo-open-dir))
-(evil-declare-key 'normal neotree-mode-map (kbd  "k") 'neotree-previous-line)
-(evil-declare-key 'normal neotree-mode-map (kbd  "j") 'neotree-next-line)
-(evil-declare-key 'normal neotree-mode-map (kbd  "m a") 'neotree-create-node)
-(evil-declare-key 'normal neotree-mode-map (kbd  "m r") 'neotree-rename-node)
-(evil-declare-key 'normal neotree-mode-map (kbd  "m c") 'neotree-copy-node)
-(evil-declare-key 'normal neotree-mode-map (kbd  "m d") 'neotree-delete-node)
-
 (global-set-key (kbd "C-k") (lambda () (interactive) (evil-previous-line 10)))
 (global-set-key (kbd "C-j") (lambda () (interactive) (evil-next-line 10)))
 
+;; Smartparsen
 (defhydra hydra-smartparens-menu nil
   "sp"
   ("e" sp-forward-slurp-sexp "slrp")
@@ -76,34 +66,41 @@
   ("l" sp-select-next-thing-exchange "b-sel")
 
   ("k" sp-kill-sexp "kill"))
-
 (evil-leader/set-key
  "s"   'hydra-smartparens-menu/body)
 
+;; Text ops
 (defhydra hydra-textop-menu nil
   "mv"
   ("k" move-text-up "up")
   ("j" move-text-down "down")
   ("s" transpose-sexps "sexp"))
-
 (evil-leader/set-key
  "m"   'hydra-textop-menu/body)
 
+;; Modes
 (defhydra hydra-modes-menu nil
   "modes"
   ("v" vline-mode "vline")
-  ("h" hl-line-mode "hline"))
-
+  ("h" hl-line-mode "hline")
+  ("e" evil-smartparens-mode "evil-sp"))
 (evil-leader/set-key
  "q"   'hydra-modes-menu/body)
 
+;; Magin
 (defhydra hydra-magit-menu nil
   "modes"
   ("s" magit-status "status"))
-
 (evil-leader/set-key
  "v"   'hydra-magit-menu/body)
 
+(defhydra hydra-project-explorer-menu nil
+  "prj-exp"
+  ("t" 'pr/create-file "create")
+  ("d" 'pr/delete-file "delete")
+  ("m" 'pr/rename-file "rename")
+  ("c" 'pr/copy-file   "copy"))
+(define-key project-explorer-mode-map (kbd "e") 'hydra-project-explorer-menu/body)
 
 ;; Company
 

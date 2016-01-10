@@ -24,10 +24,11 @@
   (nconc
     evil-emacs-state-modes
     '(magit-log-edit-mode
-       nav-mode
-       cider-repl-mode
-       grep-mode
-       ibuffer-mode)))
+      project-explorer-mode
+      nav-mode
+      cider-repl-mode
+      grep-mode
+      ibuffer-mode)))
 
 (setq evil-search-module 'evil-search)
 (setq evil-magic 'very-magic)
