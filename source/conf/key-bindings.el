@@ -37,7 +37,7 @@
  ","   'helm-M-x
  "."   'eval-buffer
  "c"   'comment-or-uncomment-region
- "d d" 'dash-at-point
+ "d"   'dash-at-point
  "e"   'er/expand-region
  "a"   'align-regexp
  "t"   'project-explorer-open

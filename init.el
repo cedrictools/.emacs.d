@@ -62,6 +62,7 @@
      helm-projectile
      rainbow-mode
      rainbow-delimiters
+     solarized-theme
 
      hydra
 

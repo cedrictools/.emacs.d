@@ -27,38 +27,6 @@
 ;; Or both alts
 ;;(setq mac-option-modifier nil)))
 
-(defun pbcopy ()
-  (interactive)
-  (call-process-region (point) (mark) "pbcopy")
-  (setq deactivate-mark t))
-
-(defun pbpaste ()
-  (interactive)
-  (call-process-region (point) (if mark-active (mark) (point)) "pbpaste" t t))
-
-(defun pbcut ()
-  (interactive)
-  (pbcopy)
-  (delete-region (region-beginning) (region-end)))
-
-;;;
-;; copy & paste
-;;
-;; Credits:
-;; http://stackoverflow.com/questions/9985316/how-to-paste-to-emacs-from-clipboard
-(defun copy-from-osx  ()
-  (shell-command-to-string  "pbpaste"))
-
-(defun paste-to-osx  (text &optional push)
-  (let  ((process-connection-type nil))
-    (let  ((proc  (start-process  "pbcopy"  "*Messages*"  "pbcopy")))
-      (process-send-string proc text)
-      (process-send-eof proc))))
-
-(setq interprogram-cut-function 'paste-to-osx)
-(setq interprogram-paste-function 'copy-from-osx)
-;; << copy & paste end
-
 ;; Use aspell for spelling if it's available
 (when (executable-find "aspell")
   (setq ispell-program-name (executable-find "aspell")))
@@ -66,17 +34,46 @@
 ;; OSX ls doesn't support --dired
 (setq dired-use-ls-dired nil)
 
-(when (display-graphic-p)
+(when (my/is-terminal-p)
+  (defun pbcopy ()
+    (interactive)
+    (call-process-region (point) (mark) "pbcopy")
+    (setq deactivate-mark t))
+  (defun pbpaste ()
+    (interactive)
+    (call-process-region (point) (if mark-active (mark) (point)) "pbpaste" t t))
+  (defun pbcut ()
+    (interactive)
+    (pbcopy)
+    (delete-region (region-beginning) (region-end)))
+  ;;
+  ;; copy & paste
+  ;;
+  ;; Credits:
+  ;; http://stackoverflow.com/questions/9985316/how-to-paste-to-emacs-from-clipboard
+  (defun copy-from-osx  ()
+    (shell-command-to-string  "pbpaste"))
+
+  (defun paste-to-osx  (text &optional push)
+    (let  ((process-connection-type nil))
+      (let  ((proc  (start-process  "pbcopy"  "*Messages*"  "pbcopy")))
+        (process-send-string proc text)
+        (process-send-eof proc))))
+
+  (setq interprogram-cut-function 'paste-to-osx)
+  (setq interprogram-paste-function 'copy-from-osx))
+
+(unless (my/is-terminal-p)
   ;; Fix path on OSx
   (my/set-exec-path-from-shell-PATH)
-
   ;; Use proper sRGB
   ;; http://lists.gnu.org/archive/html/emacs-devel/2013-12/msg00741.html
   (setq ns-use-srgb-colorspace t)
+  (setq ns-use-native-fullscreen t)
+  ;;(toggle-frame-fullscreen)
 
-  (setq ns-use-native-fullscreen t))
+  (set-face-attribute 'region nil :background "#002b36" :foreground "#586e75"))
 
 (provide 'my-osx)
 
 ;;; me-osx.el ends here
-

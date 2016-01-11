@@ -32,8 +32,8 @@
       20000000)
 
 (menu-bar-mode -1)
-;;(scroll-bar-mode -1)
-;;(tool-bar-ode -1)
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
 
 (my/touch
   (expand-file-name "custom.el" user-emacs-directory))

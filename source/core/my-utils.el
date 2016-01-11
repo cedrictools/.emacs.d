@@ -29,7 +29,11 @@
   (string-equal system-type "linux"))
 
 (defun my/windows-p ()
-  (string-equal system-type "linux"))
+  (string-equal system-type "windows"))
+
+(defun my/is-terminal-p ()
+  "Whether emacs is run in terminal mode or not."
+  (not (display-graphic-p)))
 
 (defun my/touch (path)
   (shell-command (concat "touch " path) nil))

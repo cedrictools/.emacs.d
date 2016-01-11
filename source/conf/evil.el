@@ -26,6 +26,7 @@
     '(magit-log-edit-mode
       project-explorer-mode
       nav-mode
+      cider-stacktrace-mode
       cider-repl-mode
       grep-mode
       ibuffer-mode)))
