@@ -72,7 +72,7 @@
   (setq ns-use-native-fullscreen t)
   ;;(toggle-frame-fullscreen)
 
-  (set-face-attribute 'region nil :background "#002b36" :foreground "#586e75"))
+  )
 
 (provide 'my-osx)
 

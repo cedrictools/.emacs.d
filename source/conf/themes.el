@@ -7,4 +7,5 @@
   (load-theme 'solarized t))
 
 (unless (my/is-terminal-p)
-  (load-theme 'solarized-dark))
+  (load-theme 'solarized-dark)
+  (set-face-attribute 'region nil :background "#002b36" :foreground "#586e75"))
