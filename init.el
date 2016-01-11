@@ -4,6 +4,7 @@
 
 (setq load-prefer-newer t)
 
+
 ;; incorporate some of magnars awesome emacs stuff
 ;; https://github.com/magnars/.emacs.d/blob/bc02c2d8853afc8ee61cc705945b47c725b9fb65/settings/key-bindings.el
 
