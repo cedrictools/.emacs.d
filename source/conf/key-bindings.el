@@ -40,7 +40,7 @@
  "d"   'dash-at-point
  "e"   'er/expand-region
  "a"   'align-regexp
- "t"   'project-explorer-open
+ "t"   'neotree-show
  "u"   'undo-tree-visualize
  "b"   'helm-buffers-list
  "f"   'helm-projectile
@@ -94,17 +94,10 @@
 (evil-leader/set-key
  "v"   'hydra-magit-menu/body)
 
-(defhydra hydra-project-explorer-menu nil
-  "prj-exp"
-  ("t" pr/create-file "create")
-  ("d" pr/delete-file "delete")
-  ("m" pr/rename-file "rename")
-  ("c" pr/copy-file   "copy"))
-(define-key project-explorer-mode-map (kbd "e") 'hydra-project-explorer-menu/body)
-
 ;; Projectile
 (defhydra hydra-projectile-menu nil
   "projectile"
+  ("p" projectile-switch-project "switch project")
   ("t" projectile-find-test-file "test files")
   ("r" projectile-replace "query-replace"))
 (evil-leader/set-key
@@ -116,3 +109,22 @@
 
 (define-key company-active-map (kbd "C-j") 'company-select-next-or-abort)
 (define-key company-active-map (kbd "C-k") 'company-select-previous-or-abort)
+
+
+;; Neotree
+(evil-declare-key 'normal neotree-mode-map (kbd  "RET") (neotree-make-executor
+                                                         :file-fn 'neo-open-file
+                                                         :dir-fn  'neo-open-dir))
+(evil-declare-key 'normal neotree-mode-map (kbd  "k") 'neotree-previous-line)
+(evil-declare-key 'normal neotree-mode-map (kbd  "j") 'neotree-next-line)
+(evil-declare-key 'normal neotree-mode-map (kbd  "m a") 'neotree-create-node)
+(evil-declare-key 'normal neotree-mode-map (kbd  "m r") 'neotree-rename-node)
+(evil-declare-key 'normal neotree-mode-map (kbd  "m c") 'neotree-copy-node)
+(evil-declare-key 'normal neotree-mode-map (kbd  "m d") 'neotree-delete-node)
+;;(defhydra hydra-project-explorer-menu nil
+;;  "prj-exp"
+;;  ("t" pr/create-file "create")
+;;  ("d" pr/delete-file "delete")
+;;  ("m" pr/rename-file "rename")
+;;  ("c" pr/copy-file   "copy"))
+;;(define-key project-explorer-mode-map (kbd "e") 'hydra-project-explorer-menu/body)

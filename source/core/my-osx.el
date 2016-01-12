@@ -71,7 +71,7 @@
   (setq ns-use-srgb-colorspace t)
   (setq ns-use-native-fullscreen t)
   ;;(toggle-frame-fullscreen)
-  (set-face-attribute 'default nil :height 140))
+  (set-face-attribute 'default nil :height 150))
 
 (provide 'my-osx)
 

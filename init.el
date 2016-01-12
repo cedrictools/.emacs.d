@@ -53,7 +53,8 @@
      yasnippet
      smartparens
      undo-tree
-     project-explorer
+     neotree
+     ;;project-explorer
 
      move-text
 

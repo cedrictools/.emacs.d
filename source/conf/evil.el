@@ -24,7 +24,7 @@
   (nconc
     evil-emacs-state-modes
     '(magit-log-edit-mode
-      project-explorer-mode
+      ;;project-explorer-mode
       nav-mode
       cider-stacktrace-mode
       cider-repl-mode
