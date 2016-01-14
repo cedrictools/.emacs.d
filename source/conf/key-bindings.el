@@ -38,17 +38,16 @@
  "."   'eval-buffer
  "c"   'comment-or-uncomment-region
  "d"   'dash-at-point
- "e"   'er/expand-region
- "a"   'align-regexp
- "t"   'neotree-show
+ "a r" 'align-regexp
+ "a a" 'align-entire
  "u"   'undo-tree-visualize
  "b"   'helm-buffers-list
- "f"   'helm-projectile
+ "p"   'helm-projectile
+ "P"   'helm-projectile-ag
+ "f"   'neotree-show
  "F"   'helm-find-files
- "b"   'helm-buffers-list
- "g"   'helm-projectile-ag
- "e"   'evil-ace-jump-word-mode
- "n"   'evil-ace-jump-line-mode
+ "w"   'evil-ace-jump-word-mode
+ "l"   'evil-ace-jump-line-mode
  "i"   'evil-ace-jump-char-mode)
 
 (global-set-key (kbd "C-k") (lambda () (interactive) (evil-previous-line 10)))
@@ -76,7 +75,7 @@
   ("j" move-text-down "down")
   ("s" transpose-sexps "sexp"))
 (evil-leader/set-key
- "m"   'hydra-textop-menu/body)
+ "t"   'hydra-textop-menu/body)
 
 ;; Modes
 (defhydra hydra-modes-menu nil
@@ -101,7 +100,7 @@
   ("t" projectile-find-test-file "test files")
   ("r" projectile-replace "query-replace"))
 (evil-leader/set-key
-  "p"  'hydra-projectile-menu/body)
+  "m"  'hydra-projectile-menu/body)
 
 
 
