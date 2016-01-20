@@ -111,15 +111,20 @@
 
 
 ;; Neotree
+(defhydra hydra-neotree-menu nil
+  "neotree"
+  ("a" neotree-create-node "create")
+  ("r" neotree-rename-node "rename")
+  ("c" neotree-copy-node "copy")
+  ("d" neotree-delete-node "delete"))
+(evil-declare-key 'normal neotree-mode-map (kbd  "m") 'hydra-neotree-menu/body)
+(evil-declare-key 'normal neotree-mode-map (kbd  "k") 'neotree-previous-line)
+(evil-declare-key 'normal neotree-mode-map (kbd  "j") 'neotree-next-line)
 (evil-declare-key 'normal neotree-mode-map (kbd  "RET") (neotree-make-executor
                                                          :file-fn 'neo-open-file
                                                          :dir-fn  'neo-open-dir))
-(evil-declare-key 'normal neotree-mode-map (kbd  "k") 'neotree-previous-line)
-(evil-declare-key 'normal neotree-mode-map (kbd  "j") 'neotree-next-line)
-(evil-declare-key 'normal neotree-mode-map (kbd  "m a") 'neotree-create-node)
-(evil-declare-key 'normal neotree-mode-map (kbd  "m r") 'neotree-rename-node)
-(evil-declare-key 'normal neotree-mode-map (kbd  "m c") 'neotree-copy-node)
-(evil-declare-key 'normal neotree-mode-map (kbd  "m d") 'neotree-delete-node)
+
+
 ;;(defhydra hydra-project-explorer-menu nil
 ;;  "prj-exp"
 ;;  ("t" pr/create-file "create")

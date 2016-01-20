@@ -54,6 +54,7 @@
      smartparens
      undo-tree
      neotree
+     window-numbering
      ;;project-explorer
 
      move-text
