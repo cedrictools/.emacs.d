@@ -125,6 +125,15 @@
                                                          :dir-fn  'neo-open-dir))
 
 
+;; window management
+(defhydra hydra-windows-menu nil
+  "wins"
+  ("s" select-window-0 "0")
+  ("t" select-window-1 "1")
+  ("n" select-window-2 "2")
+  ("e" select-window-3 "3"))
+(global-set-key (kbd "M-e") 'hydra-windows-menu/body)
+
 ;;(defhydra hydra-project-explorer-menu nil
 ;;  "prj-exp"
 ;;  ("t" pr/create-file "create")
