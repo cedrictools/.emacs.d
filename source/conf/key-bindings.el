@@ -32,41 +32,52 @@
 
 (define-key evil-visual-state-map (kbd "a f") 'sp-select-next-thing)
 
+;; align complete buffer
+(defun align-buffer ()
+  (interactive)
+  (save-excursion
+    (indent-region (point-min) (point-max) nil)))
+(global-set-key [f12] 'indent-buffer)
+
 (evil-leader/set-leader ",")
 (evil-leader/set-key
- ","   'helm-M-x
- "."   'eval-buffer
- "c"   'comment-or-uncomment-region
- "d"   'dash-at-point
- "a r" 'align-regexp
- "a a" 'align-entire
- "u"   'undo-tree-visualize
- "b"   'helm-buffers-list
- "p"   'helm-projectile
- "P"   'helm-projectile-ag
- "f"   'neotree-show
- "F"   'helm-find-files
- "w"   'evil-ace-jump-word-mode
- "l"   'evil-ace-jump-line-mode
- "i"   'evil-ace-jump-char-mode)
+  ","   'helm-M-x
+  "."   'eval-buffer
+  "c"   'comment-or-uncomment-region
+  "d"   'dash-at-point
+  "a r" 'align-regexp
+  "a a" 'align-buffer
+  "SPC" 'evil-ace-jump-word-mode
+  "u"   'undo-tree-visualize
+  "b"   'helm-buffers-list
+  "p"   'helm-projectile
+  "P"   'helm-projectile-ag
+  "f"   'neotree-find
+  "F"   'helm-find-files)
 
 (global-set-key (kbd "C-k") (lambda () (interactive) (evil-previous-line 10)))
 (global-set-key (kbd "C-j") (lambda () (interactive) (evil-next-line 10)))
 
-;; Smartparsen
+;; Smartparens
 (defhydra hydra-smartparens-menu nil
   "sp"
+  ("j" sp-next-sexp "nxt")
+  ("k" sp-backward-up-sexp "prv")
+
   ("e" sp-forward-slurp-sexp "slrp")
   ("n" sp-forward-barf-sexp "brf")
   ("s" sp-backward-slurp-sexp "b-slrp")
   ("t" sp-backward-barf-sexp "b-brf")
-
   ("g" sp-select-pervious-thing-exchange "sel")
   ("l" sp-select-next-thing-exchange "b-sel")
 
-  ("k" sp-kill-sexp "kill"))
+  ("d" sp-kill-sexp "kill"))
 (evil-leader/set-key
- "s"   'hydra-smartparens-menu/body)
+  "s"   'hydra-smartparens-menu/body)
+
+(evil-declare-key 'normal clojure-mode-map (kbd "{")
+  (sp-restrict-to-object-interactive 'sp-prefix-pair-object 'sp-forward-sexp))
+ ;; (sp-restrict-to-pairs-interactive '("{" "[") 'sp-down-sexp))
 
 ;; Text ops
 (defhydra hydra-textop-menu nil
@@ -75,7 +86,7 @@
   ("j" move-text-down "down")
   ("s" transpose-sexps "sexp"))
 (evil-leader/set-key
- "t"   'hydra-textop-menu/body)
+  "t"   'hydra-textop-menu/body)
 
 ;; Modes
 (defhydra hydra-modes-menu nil
@@ -84,14 +95,14 @@
   ("h" hl-line-mode "hline")
   ("e" evil-smartparens-mode "evil-sp"))
 (evil-leader/set-key
- "q"   'hydra-modes-menu/body)
+  "q"   'hydra-modes-menu/body)
 
-;; Magin
+;; Magit
 (defhydra hydra-magit-menu nil
   "modes"
   ("s" magit-status "status"))
 (evil-leader/set-key
- "v"   'hydra-magit-menu/body)
+  "v"   'hydra-magit-menu/body)
 
 ;; Projectile
 (defhydra hydra-projectile-menu nil
@@ -102,6 +113,14 @@
 (evil-leader/set-key
   "m"  'hydra-projectile-menu/body)
 
+;; Navigation
+(defhydra hydra-navigation-menu nil
+  "nav"
+  ("l" evil-ace-jump-line-mode "line")
+  ("i" evil-ace-jump-char-mode "char")
+  ("o" other-window "owin"))
+(evil-leader/set-key
+  "n"  'hydra-navigation-menu/body)
 
 
 ;; Company
@@ -114,7 +133,7 @@
 (defhydra hydra-neotree-menu nil
   "neotree"
   ("a" neotree-create-node "create")
-  ("r" neotree-rename-node "rename")
+  ("m" neotree-rename-node "rename")
   ("c" neotree-copy-node "copy")
   ("d" neotree-delete-node "delete"))
 (evil-declare-key 'normal neotree-mode-map (kbd  "m") 'hydra-neotree-menu/body)
@@ -132,12 +151,5 @@
   ("t" select-window-1 "1")
   ("n" select-window-2 "2")
   ("e" select-window-3 "3"))
-(global-set-key (kbd "M-e") 'hydra-windows-menu/body)
-
-;;(defhydra hydra-project-explorer-menu nil
-;;  "prj-exp"
-;;  ("t" pr/create-file "create")
-;;  ("d" pr/delete-file "delete")
-;;  ("m" pr/rename-file "rename")
-;;  ("c" pr/copy-file   "copy"))
-;;(define-key project-explorer-mode-map (kbd "e") 'hydra-project-explorer-menu/body)
+(evil-leader/set-key
+  "m"  'hydra-projectile-menu/body)
