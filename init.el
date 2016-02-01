@@ -90,7 +90,7 @@
 (setq
  package-pinned-packages
  '((cider . "melpa-stable")
-   (clojure-mode . "marmalade")))
+   (clojure-mode . "melpa")))
 
 (my/install-packages my-packages)
 (my/require-packages
